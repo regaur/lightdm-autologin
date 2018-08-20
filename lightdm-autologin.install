@@ -1,0 +1,18 @@
+user=auto-login
+
+pre_install () {
+  id -u $user || useradd -m $user
+  groupadd -r autologin || true
+  gpasswd -a $user autologin
+}
+
+post_install () {
+  chown -R $user:$user /home/$user
+  passwd -l "$user"
+  sed -i '/^#autologin-user=$/s/.*/autologin-user=auto-login/' /etc/lightdm/lightdm.conf
+}
+
+post_remove () {
+  id -u $user && userdel --remove $user
+  sed -i '/^autologin-user=auto-login$/s/.*/#autologin-user=/' /etc/lightdm/lightdm.conf
+}

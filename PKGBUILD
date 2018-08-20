@@ -2,7 +2,7 @@
 
 pkgname='lightdm-autologin'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Creates a user called "auto-login" and configures lightdm to auto-ligin that user'
 packager='Jan Boelsche'
 arch=('any')

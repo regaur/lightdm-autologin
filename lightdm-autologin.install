@@ -14,6 +14,7 @@ post_install () {
   chown -R $user:$user /home/$user
   sed -i '/^#autologin-user=$/s/.*/autologin-user=auto-login/' /etc/lightdm/lightdm.conf
   sed -i '/^#autologin-user-timeout=.*$/s/.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+  sed -i '/^#autologin-session=.*$/s/.*/autologin-session=xinitrc/' /etc/lightdm/lightdm.conf
 }
 
 post_remove () {

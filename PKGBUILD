@@ -1,7 +1,7 @@
 # Maintainer: Jan Boelsche <jan@lagomorph.de>
 
 pkgname='lightdm-autologin'
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='Create "auto-login" user, log into lightdm and run xinitrc'
 packager='Jan Boelsche'
@@ -20,22 +20,24 @@ install=${pkgname}.install
 source=(
   '.dmrc'
   '.xinitrc'
+  '.xsession'
   'xinitrc.desktop'
   'xinitrcsession-helper'
 )
 
 sha256sums=('dbe56863cea951d3c630fb7b870837ef0715d4eead3bb34f7fc171f9fa852421'
-            'd605ca06ba7892f287810cf98bda749eec7c64375691216d5419970d4e33edf5'
+            'c078b13b58c4530efb1ba8c0116509f2bb479737f4a03e5554d08154a133ae87'
+            '96cf6de2ed07d6f5d3daa113fb6a76f76814377f9bad37ae57a56d5060aea842'
             '11784a3c829ef9266ba5ca02be8ce6b14b569ad7be1a79be105c3b38ed3da73a'
             '8cce875ec3b97797ff7b606bb5d4682988eedb4f8de20532e8f92463b4920564')
 
 package() {
   home=${pkgdir}/home/auto-login
 	install -m 700 -d "${home}"
-	install -m 755 -d "${home}/xinitrc.d"
 
 	install -m 644 -t "${home}" .dmrc
 	install -m 755 -t "${home}" .xinitrc
+	install -m 755 -t "${home}" .xsession
 
   install -Dm 644 -t ${pkgdir}/usr/share/xsessions xinitrc.desktop
   install -Dm 755 -t ${pkgdir}/usr/bin xinitrcsession-helper

@@ -2,7 +2,7 @@
 
 pkgname='lightdm-autologin'
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Create "auto-login" user, log into lightdm and run xinitrc'
 packager='Jan Boelsche'
 arch=('any')
@@ -32,10 +32,12 @@ sha256sums=('dbe56863cea951d3c630fb7b870837ef0715d4eead3bb34f7fc171f9fa852421'
 package() {
   home=${pkgdir}/home/auto-login
 	install -m 700 -d "${home}"
-	install -m 644 -t "${home}" .dmrc
-	install -m 644 -t "${home}" .xinitrc
+	install -m 755 -d "${home}/xinitrc.d"
 
-  install -m 644 -t ${pkgdir}/usr/share/xsessions xinitrc.desktop
-  install -m 755 -4 ${pkgdir}/usr/bin xinitrcsession-helper
+	install -m 644 -t "${home}" .dmrc
+	install -m 755 -t "${home}" .xinitrc
+
+  install -Dm 644 -t ${pkgdir}/usr/share/xsessions xinitrc.desktop
+  install -Dm 755 -t ${pkgdir}/usr/bin xinitrcsession-helper
 }
 

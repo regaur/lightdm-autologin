@@ -2,13 +2,16 @@ user=auto-login
 
 pre_install () {
   id -u $user || useradd -m $user
+  local password=$(head -c9 /dev/urandom|base64|tr 'O01lzZyY+/' 'abcdefghij')
+  echo -e "${password}\n${password}\n" | passwd "$user"
+  echo "New ${user} password is: ${password}"
+  
   groupadd -r autologin || true
   gpasswd -a $user autologin
 }
 
 post_install () {
   chown -R $user:$user /home/$user
-  passwd -l "$user"
   sed -i '/^#autologin-user=$/s/.*/autologin-user=auto-login/' /etc/lightdm/lightdm.conf
   sed -i '/^#autologin-user-timeout=.*$/s/.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
 }

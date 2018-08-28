@@ -1,7 +1,7 @@
 # Maintainer: Jan Boelsche <jan@lagomorph.de>
 
 pkgname='lightdm-autologin'
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc='Create "auto-login" user, log into lightdm and run xinitrc'
 packager='Jan Boelsche'

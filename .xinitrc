@@ -1,2 +1,1 @@
-echo "Running .xinitrc as $(whoami)" >> /var/log/xinitrc.log
-# start your window manager or compositor here
+# Consider using xsession.d instead of editing this file 

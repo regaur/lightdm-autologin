@@ -1,7 +1,7 @@
 # Maintainer: Jan Boelsche <jan@lagomorph.de>
 
 pkgname='lightdm-autologin'
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc='Create "auto-login" user, log into lightdm and run xinitrc'
 packager='Jan Boelsche'
@@ -26,8 +26,9 @@ source=(
   '10-xhost-allow-auto-login-user'
 )
 
+
 sha256sums=('dbe56863cea951d3c630fb7b870837ef0715d4eead3bb34f7fc171f9fa852421'
-            'c078b13b58c4530efb1ba8c0116509f2bb479737f4a03e5554d08154a133ae87'
+            '839f7b53680095a3be9f9d504d578dcee57688532131d27a1d999c8195c216b8'
             'b3ac5d8a5d49e5221a363bba4e6264b4c415400bdf010ee7e3b5a2554290f480'
             '11784a3c829ef9266ba5ca02be8ce6b14b569ad7be1a79be105c3b38ed3da73a'
             '8cce875ec3b97797ff7b606bb5d4682988eedb4f8de20532e8f92463b4920564'
